@@ -27,17 +27,17 @@ def get_candidates(config):
         params={'extend': 'hourly', 'units': 'si'}
     ).json()
 
+    start = datetime.time(config['range']['time']['from'])
+    end = datetime.time(config['range']['time']['from'])
+
+    startdate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['from'])
+    enddate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['to'])
+
+    startspeed = config['range']['speed']['from']
+    endspeed = config['range']['speed']['to']
+
     for item in forecast['hourly']['data']:
         date = datetime.datetime.fromtimestamp(item['time'])
-
-        start = datetime.time(config['range']['time']['from'])
-        end = datetime.time(config['range']['time']['from'])
-
-        startdate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['from'])
-        enddate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['to'])
-
-        startspeed = config['range']['speed']['from']
-        endspeed = config['range']['speed']['to']
 
         candidates = []
 
