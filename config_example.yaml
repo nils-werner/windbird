@@ -1,0 +1,31 @@
+forecastio:
+    range:
+        date:
+            from: 1
+            to: 1
+        time:
+            from: 11
+            to: 19
+        speed:
+            from: 7
+            to: 20
+
+    api:
+        key: # see https://developer.forecast.io/
+
+    latitude: 49.130833
+    longitude: 10.935278
+
+twitter:
+    api:
+        key: # see https://apps.twitter.com/
+        secret: # see https://apps.twitter.com/
+
+    token:
+        key: # see https://apps.twitter.com/
+        secret: # see https://apps.twitter.com/
+
+trigger:
+    hours: 3
+
+message: "More than %d hours of good wind tomorrow!"
