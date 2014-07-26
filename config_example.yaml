@@ -7,8 +7,8 @@ forecastio:
             from: 11
             to: 19
         speed:
-            from: 7
-            to: 20
+            from: 3
+            to: 11
 
     api:
         key: # see https://developer.forecast.io/
