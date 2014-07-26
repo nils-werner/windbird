@@ -18,4 +18,4 @@ Installation
  6. Create crontab entry to run `main.py` once a day
 
         SHELL=/bin/bash
-        0 12 * * * source /path-to-env/bin/activate && /path-to-env/windbird/main.py > /path-to-env/windbird/main.log
+        0 12 * * * source /path-to-env/bin/activate && /path-to-env/windbird/main.py > /path-to-env/windbird/main.log 2>&1

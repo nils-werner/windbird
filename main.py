@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
+import os
 import yaml
 import twitter
 import forecast
 
 
 def main():
-    with open("config.yaml", 'r') as f:
+    root = os.path.dirname(os.path.realpath(__file__))
+
+    with open(os.path.join(root, "config.yaml"), 'r') as f:
         config = yaml.load(f)
 
     candidates = forecast.get_candidates(config['forecastio'])
