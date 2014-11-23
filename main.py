@@ -16,7 +16,19 @@ def main():
 
     if len(candidates) >= config['trigger']['hours']:
         print "%d hours of wind, posting to twitter" % len(candidates)
-        twitter.post(config['twitter'], config['message'] % len(candidates))
+
+        try:
+            twitter.post(config['twitter'], config['message'] % len(candidates))
+        except KeyError:
+            pass
+
+        try:
+            pushbullet.post(
+                config['pushbullet'], config['message'] % len(candidates)
+            )
+        except KeyError:
+            pass
+
     else:
         print "Not enough wind. %d hours" % len(candidates)
 

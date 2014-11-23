@@ -25,6 +25,15 @@ twitter:
         key: # see https://apps.twitter.com/
         secret: # see https://apps.twitter.com/
 
+pushbullet:
+    api:
+        token: # see https://www.pushbullet.com/account
+    target: # USE ONLY ONE OF THESE, see https://docs.pushbullet.com/v2/pushes/
+        channel_tag: # use to push to a channel
+        device_iden: # use to push to a device
+        email: # use to push to a user associated with an email
+        client_iden: # use to push to all users who have granted OAuth access
+
 trigger:
     hours: 3
 
