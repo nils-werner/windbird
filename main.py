@@ -4,6 +4,7 @@ import os
 import yaml
 import twitter
 import forecast
+import pushbullet
 
 
 def main():
@@ -20,14 +21,14 @@ def main():
         try:
             twitter.post(config['twitter'], config['message'] % len(candidates))
         except KeyError:
-            pass
+            print "Skipping Twitter"
 
         try:
             pushbullet.post(
                 config['pushbullet'], config['message'] % len(candidates)
             )
         except KeyError:
-            pass
+            print "Skipping Pushbullet"
 
     else:
         print "Not enough wind. %d hours" % len(candidates)

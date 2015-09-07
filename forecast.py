@@ -28,7 +28,7 @@ def get_candidates(config):
     ).json()
 
     start = datetime.time(config['range']['time']['from'])
-    end = datetime.time(config['range']['time']['from'])
+    end = datetime.time(config['range']['time']['to'])
 
     startdate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['from'])
     enddate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['to'])
@@ -36,10 +36,10 @@ def get_candidates(config):
     startspeed = config['range']['speed']['from']
     endspeed = config['range']['speed']['to']
 
+    candidates = []
+
     for item in forecast['hourly']['data']:
         date = datetime.datetime.fromtimestamp(item['time'])
-
-        candidates = []
 
         if startdate <= date.date() <= enddate:
             if start <= date.time() <= end:
