@@ -7,7 +7,7 @@ forecastio:
             from: 11
             to: 19
         speed:
-            from: 3
+            from: 3.4
             to: 11
 
     api:
@@ -37,4 +37,4 @@ pushbullet:
 trigger:
     hours: 3
 
-message: "More than %d hours of good wind tomorrow!"
+message: "%d hours of good wind (>%d kts) tomorrow! http://de.windfinder.com/forecast/brombachsee_mitteldamm #brombachsee"
