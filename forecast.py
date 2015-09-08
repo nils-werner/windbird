@@ -27,23 +27,28 @@ def get_candidates(config):
         params={'extend': 'hourly', 'units': 'si'}
     ).json()
 
-    start = datetime.time(config['range']['time']['from'])
-    end = datetime.time(config['range']['time']['to'])
+    hours = config['date']['hours']
+    start = datetime.time(hours['from'])
+    end = datetime.time(hours['to'])
 
-    startdate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['from'])
-    enddate = datetime.date.today() + datetime.timedelta(days=config['range']['date']['to'])
+    days = config['date']['days']
+    startdate = datetime.date.today() + datetime.timedelta(days=days['from'])
+    enddate = datetime.date.today() + datetime.timedelta(days=days['to'])
 
-    startspeed = config['range']['speed']['from']
-    endspeed = config['range']['speed']['to']
-
+    fields = config['fields']
     candidates = []
 
     for item in forecast['hourly']['data']:
         date = datetime.datetime.fromtimestamp(item['time'])
 
-        if startdate <= date.date() <= enddate:
-            if start <= date.time() <= end:
-                if startspeed <= item['windSpeed'] <= endspeed:
-                    candidates.append((date, item['windSpeed']))
+        if (
+            startdate <= date.date() <= enddate and
+            start <= date.time() <= end and
+            all(
+                value['from'] <= item[key] <= value['to']
+                for key, value in fields.iteritems()
+            )
+         ):
+            candidates.append((date, item))
 
     return candidates

@@ -1,26 +1,18 @@
 #!/usr/bin/env python
 
+from __future__ import absolute_import
 import os
 import yaml
 import twitter
 import forecast
 import pushbullet
+import units
 
 
-def wind_bft(val):
-    thresholds = (
-        0.3, 1.5, 3.4, 5.4, 7.9, 10.7, 13.8, 17.1, 20.7, 24.4, 28.4, 32.6
-    )
-
-    for bft, ms in enumerate(thresholds):
-        if val < ms:
-            return bft
-
-    return len(thresholds)
-
-
-def wind_kts(val):
-    return val * 3.6 / 1.852
+targets = {
+    'twitter': twitter,
+    'pushbullet': pushbullet,
+}
 
 
 def main():
@@ -30,29 +22,28 @@ def main():
         config = yaml.load(f)
 
     candidates = forecast.get_candidates(config['forecastio'])
-    minspeed = wind_kts(min(candidates, key=lambda x: x[1])[1])
 
-    print "%d hours, max %d kts" % (len(candidates), minspeed)
+    print "%d hours" % len(candidates)
 
     if len(candidates) >= config['trigger']['hours']:
+        minspeed = units.wind_kts(
+            min(
+                candidates,
+                key=lambda x: x[1]['windSpeed']
+            )[1]['windSpeed']
+        )
+
         print "Above threshold. Posting."
         print config['message'] % (len(candidates), minspeed)
 
-        try:
-            twitter.post(
-                config['twitter'],
-                config['message'] % (len(candidates), minspeed)
-            )
-        except KeyError:
-            print "Skipping Twitter"
-
-        try:
-            pushbullet.post(
-                config['pushbullet'],
-                config['message'] % (len(candidates), minspeed)
-            )
-        except KeyError:
-            print "Skipping Pushbullet"
+        for key, module in targets.iteritems():
+            try:
+                module.post(
+                    config['key'],
+                    config['message'] % (len(candidates), minspeed)
+                )
+            except KeyError:
+                print "Config missing, skipping %s" % key
 
     else:
         print "Below threshold. Skipping."
