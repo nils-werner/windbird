@@ -36,12 +36,18 @@ def main():
 
         for key, module in targets.iteritems():
             try:
-                module.post(
-                    config['key'],
-                    config['message'] % (len(candidates), minspeed)
-                )
+                config[key]
             except KeyError:
                 print "Config missing, skipping %s" % key
+                continue
+
+            try:
+                module.post(
+                    config[key],
+                    config['message'] % (len(candidates), minspeed)
+                )
+            except:
+                print "Error during %s" % key
 
     else:
         print "Below threshold. Skipping."
