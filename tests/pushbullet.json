@@ -1,0 +1,16 @@
+{
+  "iden": "ubdpj29aOK0sKG",
+  "type": "note",
+  "title": "Note Title",
+  "body": "Note Body",
+  "created": 1399253701.9744401,
+  "modified": 1399253701.9746201,
+  "active": true,
+  "dismissed": false,
+  "sender_iden": "ubd",
+  "sender_email": "ryan@pushbullet.com",
+  "sender_email_normalized": "ryan@pushbullet.com",
+  "receiver_iden": "ubd",
+  "receiver_email": "ryan@pushbullet.com",
+  "receiver_email_normalized": "ryan@pushbullet.com"
+}

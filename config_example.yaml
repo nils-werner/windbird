@@ -31,7 +31,7 @@ twitter:
 
 pushbullet:
     api:
-        token: # see https://www.pushbullet.com/account
+        key: # see https://www.pushbullet.com/account
     target: # USE ONLY ONE OF THESE, see https://docs.pushbullet.com/v2/pushes/
         channel_tag: # use to push to a channel
         device_iden: # use to push to a device

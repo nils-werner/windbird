@@ -3,7 +3,7 @@ from requests.auth import HTTPBasicAuth
 
 
 def post(config, message):
-    requests.post(
+    retval = requests.post(
         "https://api.pushbullet.com/v2/pushes",
         data=dict(
             {
@@ -15,3 +15,8 @@ def post(config, message):
         ),
         auth=HTTPBasicAuth(config['api']['key'], '')
     )
+
+    json = retval.json()
+
+    if not "iden" in json:
+        raise RuntimeError("Could not send message to Pushbullet")

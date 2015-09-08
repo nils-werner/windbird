@@ -3,10 +3,10 @@
 from __future__ import absolute_import
 import os
 import yaml
-import twitter
-import forecast
-import pushbullet
-import units
+from . import twitter
+from . import forecast
+from . import pushbullet
+from . import units
 
 
 targets = {
@@ -16,9 +16,7 @@ targets = {
 
 
 def main():
-    root = os.path.dirname(os.path.realpath(__file__))
-
-    with open(os.path.join(root, "config.yaml"), 'r') as f:
+    with open(os.path.join("config.yaml"), 'r') as f:
         config = yaml.load(f)
 
     candidates = forecast.get_candidates(config['forecastio'])

@@ -10,12 +10,12 @@ Installation
  1. Create developer account on <https://developer.forecast.io/>
  2. Register application API key and Access Token on <https://apps.twitter.com/>
  3. Create virtualenv
- 4. Install dependencies
+ 4. Install package
 
-        pip install -r requirements.txt
+        pip install -e .
 
  5. Copy `config_example.yaml` to `config.yaml` and adjust its values
  6. Create crontab entry to run `main.py` once a day
 
         SHELL=/bin/bash
-        0 12 * * * source /path-to-env/bin/activate && /path-to-env/windbird/main.py > /path-to-env/windbird/main.log 2>&1
+        0 12 * * * source /path-to-env/bin/activate && windbird > /path-to-env/windbird/main.log 2>&1

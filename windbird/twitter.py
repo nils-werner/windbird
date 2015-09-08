@@ -6,4 +6,7 @@ def post(config, message):
     auth.set_access_token(config['token']['key'], config['token']['secret'])
 
     api = tweepy.API(auth)
-    api.update_status(message)
+    retval = api.update_status(status=message)
+
+    if not retval:
+        raise RuntimeError("Could not send message to Twitter")
