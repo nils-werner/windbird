@@ -3,6 +3,7 @@
 from __future__ import absolute_import
 import os
 import yaml
+import argparse
 from . import twitter
 from . import forecast
 from . import pushbullet
@@ -15,8 +16,17 @@ targets = {
 }
 
 
-def main():
-    with open(os.path.join("config.yaml"), 'r') as f:
+def main(args=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        'config',
+        help='Config filename',
+        default='config.yaml',
+        nargs='?',
+    )
+    args = parser.parse_args(args)
+
+    with open(os.path.join(args.config), 'r') as f:
         config = yaml.load(f)
 
     candidates = forecast.get_candidates(config['forecastio'])
