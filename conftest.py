@@ -47,18 +47,6 @@ def config_twitter():
 
 
 @pytest.fixture
-def config_pushbullet():
-    return {
-        'api': {
-            'key': 'IuAsn15',
-        },
-        'target': {
-            'channel_tag': 'yadd',
-        },
-    }
-
-
-@pytest.fixture
 def config_telegram():
     return {
         'api': {

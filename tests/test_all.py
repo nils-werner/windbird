@@ -3,7 +3,7 @@ import pytest
 import requests
 import httpretty
 from contextlib import contextmanager
-from windbird import forecast, pushbullet, twitter, telegram
+from windbird import forecast, twitter, telegram
 
 
 @contextmanager
@@ -26,20 +26,6 @@ def mock_forecast():
                 "https://api.forecast.io/forecast/([0-9a-f]+)/"
                 "([0-9\.]+),([0-9\.]+)"
             ),
-            body=data
-        )
-        yield
-
-
-@pytest.yield_fixture
-def mock_pushbullet():
-    with open("tests/pushbullet.json", "r") as myfile:
-        data = myfile.read().replace('\n', '')
-
-    with httpretty_enable():
-        httpretty.register_uri(
-            httpretty.POST,
-            "https://api.pushbullet.com/v2/pushes",
             body=data
         )
         yield
@@ -92,10 +78,6 @@ def mock_telegram():
 def test_forecast(mock_forecast, config_forecast):
     candidates = forecast.get_candidates(config_forecast)
     assert len(candidates) > 0
-
-
-def test_pushbullet(mock_pushbullet, config_pushbullet):
-    pushbullet.post(config_pushbullet, "test")
 
 
 def test_twitter(mock_twitter, config_twitter):

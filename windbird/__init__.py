@@ -6,14 +6,12 @@ import yaml
 import argparse
 from . import twitter
 from . import forecast
-from . import pushbullet
 from . import telegram
 from . import units
 
 
 targets = {
     'twitter': twitter,
-    'pushbullet': pushbullet,
     'telegram': telegram,
 }
 
