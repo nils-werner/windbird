@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "result": {
+    "message_id": 4,
+    "from": {
+      "id": 127,
+      "first_name": "Windbird",
+      "username": "windbird_bot"
+    },
+    "chat": {
+      "id": 123,
+      "first_name": "Dummy",
+      "last_name": "User",
+      "username": "dummyusr",
+      "type": "private"
+    },
+    "date": 1458476801,
+    "text": "test"
+  }
+}

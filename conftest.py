@@ -56,3 +56,15 @@ def config_pushbullet():
             'channel_tag': 'yadd',
         },
     }
+
+
+@pytest.fixture
+def config_telegram():
+    return {
+        'api': {
+            'token': '329578749:AAErpIartzzAfTrxX-z_duh8-RKASDb6U-tI',
+        },
+        'target': {
+            'chat_id': '123',
+        },
+    }

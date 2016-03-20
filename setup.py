@@ -14,6 +14,8 @@ setup(
         'ndg-httpsclient==0.3.0',  # otherwise tests will fail
         'tweepy',
         'pyyaml',
+        'HTTPretty',
+        'python-telegram-bot',
     ],
     extras_require={
         'docs': [

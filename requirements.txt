@@ -3,3 +3,4 @@ tweepy
 pyyaml
 pytest
 HTTPretty
+python-telegram-bot

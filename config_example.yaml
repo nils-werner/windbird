@@ -38,6 +38,12 @@ pushbullet:
         email: # use to push to a user associated with an email
         client_iden: # use to push to all users who have granted OAuth access
 
+telegram:
+    api:
+        token: # see https://core.telegram.org/bots
+    target:
+        chat_id: # see https://core.telegram.org/bots
+
 trigger:
     hours: 3
 
