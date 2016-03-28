@@ -20,7 +20,7 @@ forecastio:
     latitude: 49.130833
     longitude: 10.935278
 
-twitter:
+twitter: # Remove this block if you don't need Twitter
     api:
         key: # see https://apps.twitter.com/
         secret: # see https://apps.twitter.com/
@@ -29,7 +29,7 @@ twitter:
         key: # see https://apps.twitter.com/
         secret: # see https://apps.twitter.com/
 
-telegram:
+telegram: # Remove this block if you don't need Telegram
     api:
         token: # see https://core.telegram.org/bots
     target:
