@@ -18,7 +18,7 @@ def get_candidates(config):
     start = get_next_weekday(4)
 
     forecast = requests.get(
-        'https://api.forecast.io/forecast/%s/%s,%s' % (
+        'https://api.darksky.net/forecast/%s/%s,%s' % (
             config['api']['key'],
             config['latitude'],
             config['longitude']
